@@ -17,7 +17,7 @@ fi
 
 file_type=$(file --mime-type -b $dump_tar_file)
 
-if [ $file_type == 'application/x-tar' ]; then
+if [ $file_type != 'application/x-tar' ]; then
   echo "Provided file is not tar archive. Exiting..."
   exit 1
 fi
