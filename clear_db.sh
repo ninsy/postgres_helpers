@@ -23,9 +23,12 @@ if [[ -z "${POSTGRES_DB}" ]]; then
   exit 1
 fi
 
-echo "Dumping current database..."
-pg_dump -U ${POSTGRES_USER} -F t ${POSTGRES_DB} > ${POSTGRES_DB}.dump.tar
-echo "Done dumping db."
+read -p "Do you want to dump current database? [y/n] " dumpAction
+if [ $dumpAction == 'y' ]; then
+  echo "Dumping current database..."
+  pg_dump -U ${POSTGRES_USER} -F t ${POSTGRES_DB} > ${POSTGRES_DB}-$(date +%s).dump.tar
+  echo "Done dumping db."
+fi
 
 read -p "ARE YOU GOD DAMN SURE ABOUT THIS? [y/n] "  action
 
