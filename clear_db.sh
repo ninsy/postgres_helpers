@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # TODO: get output of lsof, terminate if comman different than 'postgres' ( like connection with ssh...)
+# TODO: handle following stuff - check what processes are using postgres
+# dropdb: database removal failed: ERROR:  database "X" is being accessed by other users
+# DETAIL:  There are 2 other sessions using the database.
 
 postgres_pid=$(pgrep -x postgres)
 
